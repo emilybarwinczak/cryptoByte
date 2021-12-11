@@ -15,7 +15,7 @@ const authenticatedOptions = (
 		</Nav.Link>
 		<Nav.Link>
 			<Link to='sign-out' style={linkStyle}>
-				Sign Out
+				Log Out
 			</Link>
 		</Nav.Link>
 	</>
