@@ -2,19 +2,33 @@ const mongoose = require('mongoose')
 
 const savedCoinSchema = new mongoose.Schema(
 	{
-		title: {
+		rank: {
 			type: String,
-			required: true,
 		},
-		text: {
+		symbol: {
 			type: String,
-			required: true,
 		},
-		owner: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'User',
-			required: true,
+		supply: {
+			type: String,
 		},
+        maxSupply: {
+            type: String,
+        },
+        marketCapUsd: {
+            type: String,
+        },
+        volumeUsd24Hr: {
+            type: String,
+        },
+        priceUsd: {
+            type: String,
+        },
+        changePercent24Hr: {
+            type: String,
+        },
+        vwap24Hr: {
+            type: String
+        }
 	},
 	{
 		timestamps: true,
