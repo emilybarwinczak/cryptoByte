@@ -7,6 +7,12 @@ const userSchema = new mongoose.Schema(
 			required: true,
 			unique: true,
 		},
+		firstName: {
+			type: String,
+		},
+		lastName: {
+			type: String,
+		},
 		hashedPassword: {
 			type: String,
 			required: true,
@@ -15,8 +21,10 @@ const userSchema = new mongoose.Schema(
 	},
 	{
 		timestamps: true,
+		toJSON: { virtuals: true },
 		toObject: {
 			// remove `hashedPassword` field when we call `.toObject`
+			virtuals: true,
 			transform: (_doc, user) => {
 				delete user.hashedPassword
 				return user
@@ -24,5 +32,8 @@ const userSchema = new mongoose.Schema(
 		},
 	}
 )
+userSchema.virtual('fullName').get(function () {
+	return this.firstName + ' ' + this.lastName
+})
 
 module.exports = mongoose.model('User', userSchema)
