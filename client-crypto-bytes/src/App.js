@@ -61,7 +61,17 @@ const App = () => {
 			<Header user={user} />
 			<Routes>
 				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
-				<Route path='/dashboard' element={<Dashboard msgAlert={msgAlert} coins={coins} user={user} />} />
+				<Route
+					path='/dashboard'
+					element={
+						<RequireAuth user={user}>
+							<Dashboard
+								msgAlert={msgAlert}
+								coins={coins}
+								user={user} />
+						</RequireAuth>
+					}
+				/>
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
