@@ -21,6 +21,8 @@ const SignUp = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
 
     const navigate = useNavigate()
 
@@ -29,7 +31,7 @@ const SignUp = (props) => {
 
 		const { msgAlert, setUser } = props
 
-        const credentials = {email, password, passwordConfirmation}
+        const credentials = {email, firstName, lastName, password, passwordConfirmation}
 
 		signUp(credentials)
 			.then(() => signIn(credentials))
@@ -69,6 +71,28 @@ const SignUp = (props) => {
                             value={email}
                             placeholder='Enter email'
                             onChange={e => setEmail(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId='firstName'>
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control
+                            required
+                            type='text'
+                            name='firstName'
+                            value={firstName}
+                            placeholder='Enter First Name'
+                            onChange={e => setFirstName(e.target.value)}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId='lastName'>
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control
+                            required
+                            type='text'
+                            name='lastName'
+                            value={lastName}
+                            placeholder='Enter Last Name'
+                            onChange={e => setLastName(e.target.value)}
                         />
                     </Form.Group>
                     <Form.Group controlId='password'>
