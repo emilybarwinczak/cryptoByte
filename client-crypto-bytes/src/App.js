@@ -1,5 +1,5 @@
 // import React, { Component, Fragment } from 'react'
-import React, { useState, Fragment } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
@@ -18,9 +18,24 @@ const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
+	let [coins, setCoins] = useState([])
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
+
+	let url = `https://api.coincap.io/v2/assets`
+
+	useEffect(() => {
+		fetch(url)
+			.then(response => response.json())
+			.then((coinData) => {
+				coinData = Object.values(coinData)
+				console.log('These are the coins', coinData);
+				setCoins(coinData[0])
+			})
+			.catch(err => console.error)
+	}, [])
+
 	const clearUser = () => {
 		console.log('clear user ran')
 		setUser(null)
@@ -46,7 +61,7 @@ const App = () => {
 			<Header user={user} />
 			<Routes>
 				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
-				<Route path='/dashboard' element={<Dashboard msgAlert={msgAlert} user={user} />} />
+				<Route path='/dashboard' element={<Dashboard msgAlert={msgAlert} coins={coins} user={user} />} />
 				<Route
 					path='/sign-up'
 					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
@@ -82,6 +97,7 @@ const App = () => {
 				/>
 			))}
 		</Fragment>
+
 	)
 }
 
