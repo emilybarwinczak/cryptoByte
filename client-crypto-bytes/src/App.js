@@ -19,6 +19,7 @@ const App = () => {
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	let [coins, setCoins] = useState([])
+	let [showCoin, setShowCoin] = useState([])
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
@@ -55,6 +56,10 @@ const App = () => {
 			)
 		})
 	}
+// Function to add a coin to the database
+	const addShowCoin = (e) => {
+		setShowCoin([...showCoin, e])
+	}
 
 	return (
 		<Fragment>
@@ -68,6 +73,8 @@ const App = () => {
 							<Dashboard
 								msgAlert={msgAlert}
 								coins={coins}
+								followedCoin={showCoin}
+								onClick={addShowCoin}
 								user={user} />
 						</RequireAuth>
 					}
