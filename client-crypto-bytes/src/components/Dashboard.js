@@ -1,3 +1,4 @@
+import { createFollowedCoin } from "../api/coindb"
 
 const Dashboard = (props) => {
     const allCoins = props.coins.map((c, i) => {
@@ -7,25 +8,35 @@ const Dashboard = (props) => {
                     {c.id}
                     <br />
                     ${Number(c.priceUsd).toFixed(2)}
+                    <button onClick={() => props.onClick(c)}>Add to Favorites</button>
                 </div>
             </li>
             
         )
     })
 
-
-
-
-
+    const followedCoins = props.followedCoin.map((f, i) => {
+        return (
+            <li>
+                <div>
+                    {f.name}
+                </div>
+            </li>
+        )
+    })
 
     return (
         <>
             <div>
                 <h2>This is your dashboard</h2>
-                <ul>
-                    {allCoins}
-                </ul>
-                
+                    <h4>Followed Coins: </h4>
+                    <ul>
+                        {followedCoins}
+                    </ul>
+                    <h4>Current Info on coins: </h4>
+                    <ul>
+                        {allCoins}
+                    </ul>
             </div>
         </>
     )

@@ -5,6 +5,9 @@ const savedCoinSchema = new mongoose.Schema(
 		rank: {
 			type: String,
 		},
+        name: {
+            type: String,
+        },
 		symbol: {
 			type: String,
 		},
