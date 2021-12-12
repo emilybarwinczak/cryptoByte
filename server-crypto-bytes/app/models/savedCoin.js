@@ -32,7 +32,11 @@ const savedCoinSchema = new mongoose.Schema(
         vwap24Hr: {
             type: String,
         },
-        comments: [commentSchema]
+        owner: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User',
+			required: true,
+		}
 	},
 	{
 		timestamps: true,
