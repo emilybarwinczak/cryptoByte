@@ -56,7 +56,7 @@ const App = () => {
 			)
 		})
 	}
-// Function to add a coin to the database
+// Function to set show choin to the database
 	const addShowCoin = (e) => {
 		setShowCoin([...showCoin, e])
 	}
