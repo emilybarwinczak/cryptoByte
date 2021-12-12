@@ -2,4 +2,4 @@
     * "start": "react-scripts start"
     * "start": "react-scripts --openssl-legacy-provider start"
 
-## The error will be this have have node_modules/react-scripts/scripts/start in the error.  The code will be: code: 'ERR_OSSL_EVP_UNSUPPORTED'
+## The error will include this wording: node_modules/react-scripts/scripts/start in the error.  The code will be: code: 'ERR_OSSL_EVP_UNSUPPORTED'
