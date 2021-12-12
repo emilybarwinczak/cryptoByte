@@ -1,4 +1,28 @@
 import { createFollowedCoin } from "../api/coindb"
+import { useState } from "react"
+
+const FollowList = (props) => {
+    // const [symbol, setSymbol] = useState('')
+    // const [marketCapUsd, setMarketCapUsd] = useState('')
+    // const [maxSupply, setMaxSupply] = useState('')
+    // const [rank, setRank] = useState('')
+    // const [name, setName] = useState('')
+    // const [priceUsd, setPriceUsd] = useState('')
+    // const [supply, setSupply] = useState('')
+    // const [changePercent24Hr, setChangePercent24Hr] = useState('')
+    // const [volumeUsd24Hr, setVolumeUsd24Hr] = useState('')
+    // const [vwap24Hr, setVWap24Hr] = useState('')
+    
+    createFollowedCoin(info => {
+        console.log(`This is info: ${info} and this is props: ${props}`)
+    })
+
+    return (
+        <>
+        <h1>Follow List</h1>
+        </>
+    )
+}
 
 const Dashboard = (props) => {
     const allCoins = props.coins.map((c, i) => {
@@ -8,7 +32,7 @@ const Dashboard = (props) => {
                     {c.id}
                     <br />
                     ${Number(c.priceUsd).toFixed(2)}
-                    <button onClick={() => props.onClick(c)}>Add to Favorites</button>
+                    <button onClick={() => createFollowedCoin(c)}>Add to Favorites</button>
                 </div>
             </li>
             
