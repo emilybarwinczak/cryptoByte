@@ -27,7 +27,7 @@ const router = express.Router()
 
 // POST (create) route to add a coin to our followed list
 router.post('/dashboard', requireToken, (req, res, next) => {
-    req.body.savedCoin.owner = req.user.id
+    req.body.info.owner = req.user.id
     Saved.create({
         symbol: req.body.info.symbol,
         marketCapUsd: req.body.info.marketCapUsd,
@@ -38,7 +38,8 @@ router.post('/dashboard', requireToken, (req, res, next) => {
         supply: req.body.info.supply,
         changePercent24Hr: req.body.info.changePercent24Hr,
         volumeUsd24Hr: req.body.info.volumeUsd24Hr,
-        vwap24Hr: req.body.info.vwap24Hr
+        vwap24Hr: req.body.info.vwap24Hr,
+        owner: req.body.info.owner
     })
     .catch(next)
 })
