@@ -1,9 +1,14 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const createFollowedCoin = (info) => {
+export const createFollowedCoin = (info, user) => {
+    console.log("User: ", user)
+    console.log("Info: ", info)
 	return axios({
 		method: 'POST',
+        headers: {
+            "Authorization": `Bearer ${user.token}`
+        },
 		url: apiUrl + '/dashboard',
 		data: {
 			info: {
